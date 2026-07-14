@@ -12,8 +12,8 @@
   var GENDER_FILTER_KEY = 'ph_workout_gender_filter';
   
   // Showcase media (local files, in the same folder as the page)
-  var REF_IMAGE_URL = 'character reference sheet.png'; // input: the character reference sheet
-  var RESULT_GIF_URL = 'result.gif';                   // output: example generated exercise video
+  var REF_IMAGE_URL = 'https://cdn.jsdelivr.net/gh/PreppHint/Workout-Prompt@main/character%20reference%20sheet.png'; // input: the character reference sheet
+  var RESULT_GIF_URL = 'https://cdn.jsdelivr.net/gh/PreppHint/Workout-Prompt@main/result.gif';                   // output: example generated exercise video
 
   // Base turnaround prompt instruction displayed at the top section
   var BASE_TURNAROUND_INSTRUCTION = "Create a professional character reference sheet based strictly on the uploaded reference image. Use a clean, neutral plain background and present the sheet as a technical model turnaround while matching the exact realistic visual style of the reference. Arrange the composition into two horizontal rows. Top row: four full-body standing views – front, left profile, right profile, back. Bottom row: three close-up portraits – front, left profile, right profile. Maintain perfect identity consistency across every panel. Keep the subject in a relaxed A-pose with consistent scale and alignment, accurate anatomy, and clear silhouette. Lighting should be consistent across all panels. Output a crisp, ultra-realistic, print-ready reference sheet.";
