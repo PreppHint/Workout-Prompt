@@ -1,0 +1,37 @@
+<!-- ============================================================================ -->
+<!--  PreppHint — Character Reference Sheet Prompts Library (Minimalist Light)    -->
+<!--  PASTE EVERYTHING BELOW INTO A NEW BLOGGER *PAGE*                            -->
+<!--  (Blogger > Pages > New Page > switch editor to HTML view)                   -->
+<!--  Suggested page title: Character Reference Sheet Prompts Library             -->
+<!-- ============================================================================ -->
+
+<!-- Standalone-viewing helpers (charset + mobile viewport). On Blogger the theme  -->
+<!-- <head> already declares these, so they're redundant (and harmless) there.     -->
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<!-- Prompts Stylesheet (local file) -->
+<link href="assets/css/workout-prompts.css" rel="stylesheet"/>
+
+<!-- App Scoped Target Element -->
+<div id="ph-workout-prompts">
+  <div class="ph-workout-loading">
+    <div class="ph-workout-spinner"></div>
+    Loading prompts&hellip;
+  </div>
+  <noscript>Please enable JavaScript to browse the Character Reference prompt directory.</noscript>
+</div>
+
+<!-- Prompts Data — categories first, then one file per category.            -->
+<!-- To add prompts: edit the matching data/prompts/<category>.js file.       -->
+<!-- To add a category: see the instructions in data/categories.js.           -->
+<script defer="defer" src="data/categories.js"></script>
+<script defer="defer" src="data/prompts/abs.js"></script>
+<script defer="defer" src="data/prompts/arms.js"></script>
+<script defer="defer" src="data/prompts/back.js"></script>
+<script defer="defer" src="data/prompts/chest.js"></script>
+<script defer="defer" src="data/prompts/legs.js"></script>
+<script defer="defer" src="data/prompts/shoulders.js"></script>
+
+<!-- Renderer (local file) -->
+<script defer="defer" src="assets/js/workout-prompts.js"></script>
