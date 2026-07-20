@@ -11,9 +11,11 @@
   var FAV_KEY = 'ph_workout_favs';
   var GENDER_FILTER_KEY = 'ph_workout_gender_filter';
   
-  // Showcase media (local files, in the same folder as the page)
-  var REF_IMAGE_URL = 'character reference sheet.png'; // input: the character reference sheet
-  var RESULT_GIF_URL = 'result.gif';                   // output: example generated exercise video
+  // Showcase media. These must stay absolute: the renderer is embedded in a Blogger
+  // post, so a relative path would resolve against the blog's origin, not the CDN.
+  var CDN_BASE = 'https://cdn.jsdelivr.net/gh/PreppHint/Workout-Prompt@main/';
+  var REF_IMAGE_URL = CDN_BASE + 'character%20reference%20sheet.png'; // input: the character reference sheet
+  var RESULT_GIF_URL = CDN_BASE + 'result.gif';                       // output: example generated exercise video
 
   // Base turnaround prompt instruction displayed at the top section
   var BASE_TURNAROUND_INSTRUCTION = "Create a professional character reference sheet based strictly on the uploaded reference image. Use a clean, neutral plain background and present the sheet as a technical model turnaround while matching the exact realistic visual style of the reference. Arrange the composition into two horizontal rows. Top row: four full-body standing views – front, left profile, right profile, back. Bottom row: three close-up portraits – front, left profile, right profile. Maintain perfect identity consistency across every panel. Keep the subject in a relaxed A-pose with consistent scale and alignment, accurate anatomy, and clear silhouette. Lighting should be consistent across all panels. Output a crisp, ultra-realistic, print-ready reference sheet.";
@@ -455,7 +457,7 @@
 
           // Right Showcase Turnaround Template
           '<div class="ph-workout-ref-showcase">' +
-            '<img src="https://cdn.jsdelivr.net/gh/PreppHint/Workout-Prompt@main/character%20reference%20sheet.png" alt="Character Reference Sheet Template" class="ph-workout-ref-image"/>' +
+            '<img src="' + esc(REF_IMAGE_URL) + '" alt="Character Reference Sheet Template" class="ph-workout-ref-image"/>' +
           '</div>' +
         '</div>' +
 
@@ -467,7 +469,7 @@
             '<p class="ph-workout-result-sub">This is what your generated video looks like once you copy an exercise prompt below and run it in Omni Flash. Example shown: Push-up.</p>' +
           '</div>' +
           '<div class="ph-workout-result-media">' +
-            '<img src="https://cdn.jsdelivr.net/gh/PreppHint/Workout-Prompt@main/result.gif" alt="Example generated exercise video (push-up)" class="ph-workout-result-gif"/>' +
+            '<img src="' + esc(RESULT_GIF_URL) + '" alt="Example generated exercise video (push-up)" class="ph-workout-result-gif"/>' +
           '</div>' +
         '</div>' +
 
@@ -522,6 +524,8 @@
     if (!img) return;
     img.addEventListener('error', function onErr() {
       img.removeEventListener('error', onErr);
+      // Say which URL failed. Without this the fallback silently hides a bad src.
+      console.warn('[ph-workout] showcase media failed to load:', img.src);
       if (img.parentNode) {
         img.parentNode.innerHTML = '<div class="ph-workout-ref-fallback">' + esc(text) + '</div>';
       }
